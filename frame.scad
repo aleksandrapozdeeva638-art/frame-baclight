@@ -1,4 +1,5 @@
 use <akum_18650.scad>
+use <controller.scad>
 
 echo("Работа Поздеевой Александры!");
 thickness_frame = 4;
@@ -17,15 +18,25 @@ d_akkum = 18;
 h_akkum = 65;
 
 gap_backlight = 1.5;
-frame_debug();
 
-translate([0, 0, thickness_bottom/2+thickness_top/2])
-window_frame();
+w_controller = 20;
+
+//kit_frame();
+translate([w_back/2+w_controller/2+2*thickness_walls, 0, 0])
+kit_controller();
+
+//frame_debug();
+//translate([0, 0, thickness_bottom/2+thickness_top/2])
+//window_frame();
+//walls();
+
+module window_frame() {
 difference() {
     color("green")
     cube([w_back, h_back, thickness_top], center=true);
     color("red")
     cube([w_back-2*width_frame_window, h_back-2*width_frame_wimdow, thickness_top+1], center=true);
+    }
 }
 difference(){
     kit_frame()
